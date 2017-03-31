@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3D图展</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="warp">
+		<img src="images/d1.jpg" alt="狗狗1">
+		<img src="images/d2.jpg" alt="狗狗1">
+		<img src="images/d3.jpg" alt="狗狗1">
+		<img src="images/m1.jpg" alt="狗狗1">
+		<img src="images/m2.jpg" alt="狗狗1">
+		<img src="images/m3.jpg" alt="狗狗1">
+		<img src="images/q1.jpg" alt="狗狗1">
+		<img src="images/q2.jpg" alt="狗狗1">
+		<img src="images/q3.jpg" alt="狗狗1">
+		<img src="images/d1.jpg" alt="狗狗1">
+		<img src="images/d2.jpg" alt="狗狗1">
+	</div>
+
+	<script src='js/jquery.min.js'></script>
+	<script>
+		$(function(){
+			var oSize = $('.warp img').length;
+			// console.log(oSize);
+			var oDeg = 360 / 11 ;
+			var roX = -10;
+			var roY = 0;
+			var xN ,yN,play = null;
+			$('.warp img').each(function(i){
+				$(this).css({	
+					'transform':'rotateY('+i * oDeg+'deg) translateZ(300px)'
+				})
+			});
+			$(document).mousedown(function(event){
+				clearInterval(Ti);
+				event = event || window.event;
+				var x  =  event.clientX;
+				var y = event.clientY;
+				$(this).bind('mousemove',function(event){
+					event.returnValue=false;
+					var x_ = event.clientX;
+					var y_ = event.clientY;
+					xN = x_ - x;
+					yN = y_ - y;
+					roX += yN  *  0.07;
+					roY += xN * 0.02;
+					console.log(111)
+					$('.warp').css({
+						'transform':'perspective(800px) rotateX('+roX+'deg) rotateY('+roY+'deg)' 
+					});
+						x  =  event.clientX;
+						y = event.clientY;
+				});
+			}).mouseup(function(){
+				$(this).unbind('mousemove');
+				 Ti = setInterval(AA,1);	
+			});
+
+
+			function AA(){
+				roY+=.1;
+				$('.warp').css({
+					'transform':'perspective(800px) rotateX('+roX+'deg) rotateY('+roY+'deg)' 
+				});
+			}
+			// Ti  = setInterval(AA,1);
+		})
+
+
+$('.warp img').click(function(){
+	var $xh = $(this).index();
+	console.log($xh)
+});
+	</script>
+</body>
+</html>

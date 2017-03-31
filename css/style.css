@@ -1,0 +1,31 @@
+@charset 'utf-8';
+
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+	background-color: #000;
+}
+.warp{
+	width: 120px;
+	height: 120px;
+	margin: 100px auto;
+	position: relative;
+	transform: perspective(800px) rotateX(-10deg) rotateY(0);
+	transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+}
+.warp img{
+	width: 100%;
+	height: 100%;
+	border-radius:5px;
+	box-shadow:  0 0 10px #fff;
+	-webkit-box-shadow: 0 0 10px #fff;
+	-webkit-box-reflect: below 8px -webkit-linear-gradient(top,rgba(255,255,255,0) 40%,rgba(255,255,255,1));
+	-moz-box-reflect: below 8px -webkit-linear-gradient(top,rgba(255,255,255,0) 40%,rgba(255,255,255,1));
+	position: absolute;
+	top:0;
+	left: 0;
+}
